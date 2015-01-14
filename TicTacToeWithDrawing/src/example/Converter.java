@@ -5,6 +5,7 @@ import static example.Game.b;
 public class Converter {
 
     static byte conPixToRow(int y) {//convertYPixelToRow
+//        return (byte) ((y - GUI.getCoordLineY()) / b.getSizeSquareY());
         return (byte) ((y - GUI.getCoordLineY()) / b.getSizeSquareY());
     }
 

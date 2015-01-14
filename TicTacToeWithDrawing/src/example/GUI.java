@@ -102,12 +102,12 @@ public class GUI extends JFrame implements ActionListener, MouseListener, Interf
     public void mouseReleased(MouseEvent e) {
         if (e.getY() > coordLineY) {
 
-            b.setColumns(Converter.conPixToCol(e.getX()));
-            Simbol.setCoordSimbolX(Converter.conColToPix(b.getColumns()));
-
             b.setRows(Converter.conPixToRow(e.getY()));
             Simbol.setCoordSimbolY(Converter.conRowToPix(b.getRows()));
 
+            b.setColumns(Converter.conPixToCol(e.getX()));
+            Simbol.setCoordSimbolX(Converter.conColToPix(b.getColumns()));
+            System.out.println("row = " + b.getRows() + ", col = " + b.getColumns());
             if (b.isEnabled(b.getRows(), b.getColumns())) {
                 Simbol.drawSimbol(graphics, Simbol.getCoordSimbolX(), Simbol.getCoordSimbolY());
                 if (!getWin()) {

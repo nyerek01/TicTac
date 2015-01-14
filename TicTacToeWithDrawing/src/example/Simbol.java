@@ -13,8 +13,6 @@ public class Simbol {
     private static boolean nextStepIsX;
 
     static void drawSimbol(Graphics g2, int x, int y) {
-        // byte rows = getRows();
-        // byte columns = getColumns();
         Graphics2D g = (Graphics2D) g2;
         g.setStroke(new BasicStroke(3));
         byte center = (byte) ((b.getSizeSquareX() - sizeSimbol) >> 1);
@@ -28,21 +26,19 @@ public class Simbol {
 
             //------------------------------------------
 //            g.clearRect(55, 55, 200, 200);//Lepes visszavonasanal a szimbolumot eltavolitja
-//            drawBoard();//Palya ujrarajzolasa, a menu a kitakart reszeket eltunteti
             //------------------------------------------
         }
 //        g.drawString("You Win", x, y);
         currentSimbol = (nextStepIsX) ? Simbols.O.getValue() : Simbols.X.getValue();
 
         //Idaig tartozik a Simbol osztalyra, innentol egy masik osztaly kene hogy csinalja
-        System.out.println("Game.human.getName() = " + Game.human.getName());
-        System.out.println("Game.comp.getName() = " + Game.comp.getName());
         b.setFields(b.getRows(), b.getColumns(), currentSimbol);
         b.getEmptyFields().remove("" + ((b.getNumberLines() * b.getRows() + b.getColumns())));
-        Printer.printList(b.getEmptyFields());
         nextStepIsX = !nextStepIsX;
         b.increaseNumberSteps();
-        if (b.getNumberSteps() > (b.getNumberLines() < 9 ? TicTacToeMinSteps.getValue() : GomokuMinSteps.getValue())) {//Csak akkor hivja meg az eljarast, ha lehetseges a nyeres. 3-nal min. 5, 5-nel min. 9 lepes kell
+//        Printer.printArray(b.getFields());
+//        Printer.printList(b.getEmptyFields());
+        if (b.getNumberSteps() > (b.getNumberLines() < 9 ? TicTacToeMinSteps.getValue() : GomokuMinSteps.getValue())) {
             WinCheck.winCheck();
         }
         if (b.getEmptyFields().isEmpty()) {

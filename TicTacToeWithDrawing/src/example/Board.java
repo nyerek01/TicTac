@@ -8,19 +8,24 @@ import java.util.*;
 
 public class Board implements Interface {
 
-    private byte rows, columns, numberLines = 5, fields[][] = new byte[numberLines][numberLines];
+    private byte rows, columns, numberLines, fields[][];
     private short numberSteps, sizeSquareX, sizeSquareY, drawAreaX, drawAreaY;
     private ArrayList<String> emptyFields;
 
     Board() {
-//Parameter? pl.: numberLines
+        numberLines = 5;
+        fields = new byte[numberLines][numberLines];
+    }
+
+    Board(byte n) {
+        numberLines = n;
+        fields = new byte[numberLines][numberLines];
     }
 
     void drawBoard() {
-
         sizeSquareX = (short) (drawAreaX / numberLines);
         sizeSquareY = (short) (drawAreaY / numberLines);
-        setSizeSimbol((short) (sizeSquareX * perCent));//Bitmuvelet gyorsabb mint az aritmetikai szorzas, osztas.
+        setSizeSimbol((short) (sizeSquareX * perCent));
 
         Graphics2D g2 = GUI.getGraphic();
 
@@ -28,7 +33,7 @@ public class Board implements Interface {
         g2.setColor(Color.BLACK);
 
         short yStart = getCoordLineY();
-        short yStop = (short) (getWindowHeight() - getBottom());//memoriabol tobbet (+4 Byte), procibol kevesebbet hasznal.
+        short yStop = (short) (getWindowHeight() - getBottom());
 
         for (byte i = 1; i < numberLines; i++) {
             setCoordLineX((short) (getCoordLineX() + sizeSquareX));
@@ -66,7 +71,7 @@ public class Board implements Interface {
     }
 
     boolean isEnabled(int a, int b) {
-        return fields[a][b] == 0;
+        return fields[a + 4][b + 4] == 0;
     }
 
     byte[][] getFields() {
@@ -78,7 +83,7 @@ public class Board implements Interface {
     }
 
     void setFields(byte r, byte c, byte v) {
-        fields[r][c] = v;
+        fields[r + 4][c + 4] = v;
     }
 
     short getDrawAreaX() {

@@ -11,20 +11,16 @@ public class InitVar implements Interface {
 
         setSec(0);
         setMin(0);
-//        setRows(4);
-        b.setRows(4);
-//        setColumns(4);
-        b.setColumns(4);
+        b.setRows(0);
+        b.setColumns(0);
         setStopTime(0);
         setStartTime(0);
-//        setNumberSteps(0);
         b.setNumberSteps(0);
         setWindowWidth(600);
         setWindowHeight(600);
         setScreenWidth(sizeScreen.width);
         setScreenHeight(sizeScreen.height);
 
-//        setNumberLines(n);
         b.setNumberLines(n);
         setNextStepIsX(false);
         WinCheck.setWin(false);

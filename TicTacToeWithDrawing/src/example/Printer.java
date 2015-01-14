@@ -9,7 +9,9 @@ public class Printer {
             for (byte c = 0; c < a.length; c++) {
                 System.out.print(a[b][c] + ", ");
             }
+            System.out.println("");
         }
+        System.out.println("");
     }
 
     static void printList(ArrayList<String> f) {
